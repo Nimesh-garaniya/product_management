@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h2 class="mt-3">{{header}}:</h2>
+    {% include "message.html" %}
+    <form method="post">
+      {% csrf_token %}
+      <div class="row">
+        <div class="form-group col-6">
+        {% for field in form %}
+          <br>
+          {{ field.label_tag }}
+          {% if field.field.required %} <span class="required_sign">*</span> {% endif %}
+          {{ field }}
+          {{ field.errors }}
+          {% if field.help_text %}
+          <p class="help mt-1">{{ field.help_text|safe }}</p>
+          {% endif %}
+        {% endfor %}
+          </div>
+      </div>
+      <center><button type="submit" class="btn btn-primary mt-2 mb-5">Update</button></center>
+    </form>
+</div>    
+{% endblock %}
+

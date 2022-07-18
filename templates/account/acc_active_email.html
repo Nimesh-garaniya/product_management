@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<body>
+{% autoescape off %}
+
+<h2>Hi {{ user.user }},</h2>
+
+<h3>Please click on the link to confirm your registration,</h3>
+    <h2><a href="http://{{ domain }}{% url 'account:activate' uidb64=uid token=token %}"> [Verify] </a></h2>
+
+{% endautoescape %}
+</body>
+</html>

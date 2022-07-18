@@ -1,0 +1,26 @@
+{% include 'base.html' %}
+
+<style>
+    .errorlist{color:red; }
+</style>
+
+<div class="shadow p-5">
+    <h1>
+        Registration Form
+    </h1>
+    <hr>
+    {% include "message.html" %}
+    <form method="POST">
+        {% csrf_token %}
+
+        {{form.as_p}}
+
+        <button type="submit" class="btn btn-primary">
+            Register
+        </button>
+
+    </form>
+
+    <br>
+    Already have an account <a href="{% url 'account:login' %}">Login</a>
+</div>
